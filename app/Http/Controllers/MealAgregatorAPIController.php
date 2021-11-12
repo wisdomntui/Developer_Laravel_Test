@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\MessageJob;
 use Illuminate\Http\Request;
 
 class MealAgregatorAPIController extends Controller
 {
     public function receiveWebHook(Request $request)
     {
-        for ($i=0; $i < $request->count ; $i++) { 
-            # code...
-            (new NotifyAdminAction)->call($request, $i);
-        }
+        // Dispatch MessageJob to send messages every minute
+        MessageJob::dispatch(['request' => $request, 'index' => 0])->delay(now()->addMinutes(1));
     }
 }

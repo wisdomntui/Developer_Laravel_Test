@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class MealFactory extends Factory
+class PostFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,7 +14,9 @@ class MealFactory extends Factory
     public function definition()
     {
         return [
-
+            'title' => $this->faker->sentence,
+            'content' => $this->faker->text($maxNbChars = 500),
+            'blog_id' => 1,
         ];
     }
 }

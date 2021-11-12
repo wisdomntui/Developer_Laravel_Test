@@ -14,7 +14,7 @@ class BlogFactory extends Factory
     public function definition()
     {
         return [
-            //
+
         ];
     }
 }
